@@ -1,6 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Landing } from '../screens'
+import { Landing, Login, Signup } from '../screens'
 
 import BottomNavigation from './BottomNavigation';
 
@@ -9,13 +9,15 @@ const Stack = createNativeStackNavigator();
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator 
-            initialRouteName="Landing"
+            initialRouteName="Signup"
             screenOptions={{
                 headerShown: false,
             }}
         >
             <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
             <Stack.Screen name="Landing" component={Landing} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Signup" component={Signup} />
         </Stack.Navigator>
     )
 }

@@ -5,6 +5,8 @@ import Details from '../screens/Details/Details.screen';
 import ModelGroup from '../screens/ModelGroup/ModelGroup.screen';
 import ModelConceptsHome from '../screens/ModelConceptsHome/ModelConceptsHome.screen';
 import ConceptItem from '../components/ConceptItem/ConceptItem.component';
+import Signup from '../screens/Signup/Signup.screen';
+import Login from '../screens/Login/Login.screen';
 
 export {
     Home,
@@ -13,5 +15,7 @@ export {
     Details,
     ModelGroup,
     ModelConceptsHome,
-    ConceptItem
+    ConceptItem,
+    Signup,
+    Login
 }

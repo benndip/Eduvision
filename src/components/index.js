@@ -4,6 +4,9 @@ import ModelItem from "./ModelItem/ModelItem.component";
 import VrScene from './VrScene/VrScene.component';
 import ConceptItem from "./ConceptItem/ConceptItem.component";
 import ModelGroupAr from './ModelGroupAr/ModelGroupAr.component';
+import FormButton from "./FormButton/FromButton.component";
+import FormInput from "./FormInput/FormInput.component";
+import SocialButton from "./SocialButton/SocialButton.component";
 
 export {
     LargeItem,
@@ -11,5 +14,8 @@ export {
     ModelItem,
     VrScene,
     ConceptItem,
-    ModelGroupAr
+    ModelGroupAr,
+    FormButton,
+    FormInput,
+    SocialButton
 }
