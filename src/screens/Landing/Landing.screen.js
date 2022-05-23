@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, StatusBar } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import {
@@ -7,7 +7,6 @@ import {
   ViroBox,
   ViroScene,
   ViroSkyBox,
-  ViroSphere,
   ViroVRSceneNavigator,
   ViroMaterials,
   ViroOrbitCamera,
@@ -15,8 +14,11 @@ import {
   ViroNode,
   Viro3DObject,
 } from "@viro-community/react-viro";
+import auth from '@react-native-firebase/auth';
 
 import styles from "./Landing.style";
+
+import { AuthContext } from '../../navigation/AuthProvider';
 
 const LandingScene = () => {
   const [showModels, setShowModels] = useState(false);
@@ -74,7 +76,28 @@ const LandingScene = () => {
 };
 
 const Landing = ({ navigation }) => {
+
   const isFocused = useIsFocused();
+
+  const [initializing, setInitializing] = useState(true);
+  const {user, setUser} = useContext(AuthContext);
+
+  const onAuthStateChanged = (user) => {
+      setUser(user);
+      if (initializing) setInitializing(false);
+  }
+  
+  useEffect(() => {
+      const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+      return subscriber; // unsubscribe on unmount
+  }, []);
+
+  const getStarted = () => { 
+    user ?
+    navigation.navigate("BottomNavigation")
+    :
+    navigation.navigate("Login")
+  }
 
   return (
     <View style={styles.container}>
@@ -90,7 +113,7 @@ const Landing = ({ navigation }) => {
       )}
       <TouchableOpacity
         style={styles.exploreBtn}
-        onPress={() => navigation.navigate("BottomNavigation")}
+        onPress={getStarted}
       >
         <Text style={styles.exploreTxt}>Get Started</Text>
       </TouchableOpacity>

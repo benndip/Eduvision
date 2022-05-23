@@ -7,6 +7,7 @@ import ModelConceptsHome from '../screens/ModelConceptsHome/ModelConceptsHome.sc
 import ConceptItem from '../components/ConceptItem/ConceptItem.component';
 import Signup from '../screens/Signup/Signup.screen';
 import Login from '../screens/Login/Login.screen';
+import Onboarding from './Onboarding/Onboarding.screen';
 
 export {
     Home,
@@ -17,5 +18,6 @@ export {
     ModelConceptsHome,
     ConceptItem,
     Signup,
-    Login
+    Login,
+    Onboarding
 }

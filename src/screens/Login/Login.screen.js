@@ -36,7 +36,7 @@ const LoginScreen = ({navigation}) => {
         source={require('../../../res/images/auth.png')}
         style={styles.logo}
       />
-      <Text style={styles.text}>Eduvision</Text>
+      <Text style={{ color: '#ff6b6b', fontWeight: 'bold', fontSize: 28, marginVertical: 20 }}>Eduvision 🔥</Text>
 
       <FormInput
         labelValue={email}
