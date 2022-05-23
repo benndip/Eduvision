@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "EduvisionTest",
-    "slug": "EduvisionTest",
+    "name": "Eduvision",
+    "slug": "Eduvision",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "EduvisionTest"
+  "name": "Eduvision"
 }

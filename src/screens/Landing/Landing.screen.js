@@ -100,7 +100,7 @@ const Landing = ({ navigation }) => {
         <Text style={styles.augmentedRealityText}>Augmented Reality</Text> world
         with us. Discover new knowledge !
       </Text>
-      <Text style={styles.poweredByDr}>Powered by BackMarche</Text>
+      <Text style={styles.poweredByDr}>Powered by Immersecity</Text>
     </View>
   );
 };

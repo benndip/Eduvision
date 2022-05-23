@@ -1,4 +1,4 @@
-package com.eduvisiontest;
+package com.eduvision;
 
 import android.os.Build;
 import android.os.Bundle;

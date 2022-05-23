@@ -8,7 +8,7 @@ pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
 require 'json'
 podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {}
 
-target 'EduvisionTest' do
+target 'Eduvision' do
   use_expo_modules!
   config = use_native_modules!
 

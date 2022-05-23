@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "EduvisionTest.app"
-               BlueprintName = "EduvisionTest"
-               ReferencedContainer = "container:EduvisionTest.xcodeproj">
+               BuildableName = "Eduvision.app"
+               BlueprintName = "Eduvision"
+               ReferencedContainer = "container:Eduvision.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "EduvisionTestTests.xctest"
-               BlueprintName = "EduvisionTestTests"
-               ReferencedContainer = "container:EduvisionTest.xcodeproj">
+               BuildableName = "EduvisionTests.xctest"
+               BlueprintName = "EduvisionTests"
+               ReferencedContainer = "container:Eduvision.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EduvisionTest.app"
-            BlueprintName = "EduvisionTest"
-            ReferencedContainer = "container:EduvisionTest.xcodeproj">
+            BuildableName = "Eduvision.app"
+            BlueprintName = "Eduvision"
+            ReferencedContainer = "container:Eduvision.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EduvisionTest.app"
-            BlueprintName = "EduvisionTest"
-            ReferencedContainer = "container:EduvisionTest.xcodeproj">
+            BuildableName = "Eduvision.app"
+            BlueprintName = "Eduvision"
+            ReferencedContainer = "container:Eduvision.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
