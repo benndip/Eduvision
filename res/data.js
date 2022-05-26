@@ -213,7 +213,7 @@ export const models = [
     name: "Human heart",
     normalImage: require("./models/heart/heart.png"),
     labeled_model: require("./models/heart/heart.glb"),
-    unlabeled_model: require("./models/heart/unlabeled_heart.glb"),
+    unlabeled_model: require("./models/heart/heart.glb"),
     type: "GLB",
     description:
       "The heart is divided into four chambers. You have two chambers on the top (atrium, plural atria) and two on the bottom (ventricles), one on each side of the heart. Right atrium: Two large veins deliver oxygen-poor blood to your right atrium. The superior vena cava carries blood from your upper body",
@@ -272,8 +272,8 @@ export const models = [
     id: 7,
     name: "Human Skeletal Hand",
     normalImage: require("./models/skeleton_hand/skeleton_hand.png"),
-    labeled_model: require("./models/skeleton_hand/skeletal_hand.glb"),
-    unlabeled_model: require("./models/skeleton_hand/unlabeled_skeletal_hand.glb"),
+    labeled_model: require("./models/skeleton_hand/new_skeletal_hand.glb"),
+    unlabeled_model: require("./models/skeleton_hand/new_skeletal_hand.glb"),
     type: "GLB",
     description:
       "The human hand has 27 bones: the carpals or wrist accounts for 8; the metacarpals or palm contains five; the remaining fourteen are digital bones; fingers and thumb. The palm has five bones known as metacarpal bones, one to each of the 5 digits. These metacarpals have a head, a shaft, and a base.",
@@ -326,7 +326,7 @@ export const models = [
     sz: 0.5,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 2,
   },
 ];
 
