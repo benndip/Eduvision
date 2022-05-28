@@ -1,8 +1,9 @@
-export const modelCategories = [
+export const categories = [
   {
     id: 1,
-    name: "Animals",
-    numberOfLessons: 6,
+    name: "Body Parts",
+    number_of_lessons: 6,
+    vid: '',
     free: true,
     image: require("./images/Animals.png"),
     imageStyle: {
@@ -15,8 +16,9 @@ export const modelCategories = [
   },
   {
     id: 2,
-    name: "Shapes",
-    numberOfLessons: 10,
+    name: "Cells",
+    number_of_lessons: 10,
+    vid: '',
     free: true,
     image: require("./images/Shapes.png"),
     imageStyle: {
@@ -27,8 +29,9 @@ export const modelCategories = [
   },
   {
     id: 3,
-    name: "Numbers",
-    numberOfLessons: 8,
+    name: "Bones",
+    number_of_lessons: 8,
+    vid: '',
     free: true,
     image: require("./images/Numbers.png"),
     imageStyle: {
@@ -39,8 +42,9 @@ export const modelCategories = [
   },
   {
     id: 4,
-    name: "Plants",
-    numberOfLessons: 6,
+    name: "Physiology",
+    number_of_lessons: 6,
+    vid: '',
     free: true,
     image: require("./images/Plants.png"),
     imageStyle: {
@@ -53,8 +57,9 @@ export const modelCategories = [
   },
   {
     id: 5,
-    name: "Alphabets",
-    numberOfLessons: 10,
+    name: "Virus",
+    number_of_lessons: 10,
+    vid: '',
     free: true,
     image: require("./images/Alphabets.png"),
     imageStyle: {
@@ -65,8 +70,9 @@ export const modelCategories = [
   },
   {
     id: 6,
-    name: "Planets",
-    numberOfLessons: 8,
+    name: "Tooth types",
+    number_of_lessons: 8,
+    vid: '',
     free: true,
     image: require("./images/Planets.png"),
     imageStyle: {
@@ -77,8 +83,9 @@ export const modelCategories = [
   },
   {
     id: 7,
-    name: "Anatomy",
-    numberOfLessons: 8,
+    name: "Bacteria",
+    number_of_lessons: 8,
+    vid: '',
     free: true,
     image: require("./images/Anatomy.png"),
     imageStyle: {
@@ -91,8 +98,9 @@ export const modelCategories = [
   },
   {
     id: 8,
-    name: "Automobiles",
-    numberOfLessons: 18,
+    name: "Tissues",
+    number_of_lessons: 18,
+    vid: '',
     free: true,
     image: require("./images/Automobiles.png"),
     imageStyle: {
@@ -103,8 +111,22 @@ export const modelCategories = [
   },
   {
     id: 9,
-    name: "Landforms",
-    numberOfLessons: 20,
+    name: "Surgery Ideas",
+    number_of_lessons: 20,
+    vid: '',
+    free: true,
+    image: require("./images/Landforms.png"),
+    imageStyle: {
+      width: "80%",
+      height: "30%",
+      marginTop: 5,
+    },
+  },
+  {
+    id: 10,
+    name: "First aid",
+    number_of_lessons: 20,
+    vid: '',
     free: true,
     image: require("./images/Landforms.png"),
     imageStyle: {

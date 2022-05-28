@@ -84,6 +84,7 @@ const Landing = ({ navigation }) => {
 
   const onAuthStateChanged = (user) => {
       setUser(user);
+      console.log(user);
       if (initializing) setInitializing(false);
   }
   
@@ -140,15 +141,6 @@ ViroAnimations.registerAnimations({
       rotateY: "+=45",
     },
     duration: 1500,
-  },
-});
-
-ViroMaterials.createMaterials({
-  box: {
-    diffuseTexture: require("../../../res/images/wood.png"),
-  },
-  sphere: {
-    diffuseTexture: require("../../../res/images/stone.webp"),
   },
 });
 
