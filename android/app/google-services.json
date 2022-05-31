@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "547543986269",
+    "project_id": "eduvision-7029c",
+    "storage_bucket": "eduvision-7029c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547543986269:android:3210c142caf30cba0f1db4",
+        "android_client_info": {
+          "package_name": "com.eduvision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547543986269-9tkclmf12d1t479g3n5fg2t4aa4388e5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOwf0FHYpXzciB82qs8IxE-7jIITCBsEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547543986269-9tkclmf12d1t479g3n5fg2t4aa4388e5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 {
-  "name": "myviroapp",
+  "name": "eduvision",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,9 +10,22 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@viro-community/react-viro": "^2.20.2",
+    "@react-native-community/cli-platform-android": "3.0.3",
+    "@react-native-firebase/app": "^14.11.0",
+    "@react-native-firebase/auth": "^14.11.0",
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.2",
+    "@viro-community/react-viro": "^2.23.0",
+    "install": "^0.13.0",
+    "npm": "^8.11.0",
     "react": "17.0.2",
-    "react-native": "0.65.1"
+    "react-native": "0.65.1",
+    "react-native-onboarding-swiper": "^1.2.0",
+    "react-native-safe-area-context": "^4.2.5",
+    "react-native-screens": "^3.13.1",
+    "react-native-vector-icons": "^9.1.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
