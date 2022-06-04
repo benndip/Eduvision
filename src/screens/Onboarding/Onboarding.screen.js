@@ -1,85 +1,86 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import Onboarding from 'react-native-onboarding-swiper';
+import React, { useRef, useState } from 'react';
+import { View, FlatList, Animated, StatusBar } from 'react-native';
 
 import styles from './Onboarding.style';
 
-const Dots = ({selected}) => {
-    let backgroundColor;
+import { OnboardingItem, Paginator, NextButton } from '../../components'
 
-    backgroundColor = selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.3)';
 
+const OnBoarding = ({ navigation }) => {
+    const slides = [
+        {
+            id: 1,
+            title: 'Welcome to Eduvision',
+            description: 'Plunge in a new world of undaunted learning',
+            image: require('../../../res/images/heart.png')
+        },
+        {
+            id: 2,
+            title: '3D, AR, VR',
+            description: 'We have more for you',
+            image: require('../../../res/images/ar.png')
+        },
+        {
+            id: 3,
+            title: 'Growing learning',
+            description: 'Increasing learning and success by 90%',
+            image: require('../../../res/images/grow_learning.png')
+        },
+        {
+            id: 4,
+            title: 'Hurray!!!',
+            description: 'This will work very well for me',
+            image: require('../../../res/images/hurray.png')
+        },
+    ]
+
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const scrollX = useRef(new Animated.Value(0)).current;
+    const viewableItemsChanged = useRef(({ viewableItems }) => {
+        setCurrentIndex(viewableItems[0].index)
+    }).current
+    const slideRef = useRef(null)
+    const viewConfig = useRef({ veiwAreaCoveragePercentThreshold: 50 }).current
+    const scrollTo = () => {
+        if (currentIndex < slides.length - 1) {
+            slideRef.current.scrollToIndex({ index: currentIndex + 1 })
+        } else {
+            try {
+                storage.save({
+                    key: 'NOTFIRSTTIME',
+                    data: true,
+                    expires: 1000 * 3600 * 24 * 360
+                });
+                navigation.navigate('Landing')
+            } catch (err) {
+                // console.log(err)
+                navigation.navigate('Landing')
+            }
+        }
+    }
     return (
-        <View 
-            style={{
-                width:6,
-                height: 6,
-                marginHorizontal: 3,
-                backgroundColor
-            }}
-        />
-    );
+        <View style={styles.container}>
+            <StatusBar barStyle='light-content' backgroundColor={'#130f40'} />
+            <View style={{ flex: 3 }}>
+                <FlatList
+                    data={slides}
+                    renderItem={({ item }) => <OnboardingItem item={item} />}
+                    keyExtractor={(item) => item.id.toString()}
+                    onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: false })}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    pagingEnabled
+                    bounces={false}
+                    onViewableItemsChanged={viewableItemsChanged}
+                    // viewabilityConfig={viewConfig}
+                    scrollEventThrottle={32}
+                    ref={slideRef}
+                />
+            </View>
+            <Paginator scrollX={scrollX} data={slides} />
+            <NextButton scrollTo={scrollTo} percentage={(currentIndex + 1) * (100 / slides.length)} />
+        </View>
+    )
 }
 
-const Skip = ({...props}) => (
-    <TouchableOpacity
-        style={{marginHorizontal:10}}
-        {...props}
-    >
-        <Text style={{fontSize:16}}>Skip</Text>
-    </TouchableOpacity>
-);
-
-const Next = ({...props}) => (
-    <TouchableOpacity
-        style={{marginHorizontal:10}}
-        {...props}
-    >
-        <Text style={{fontSize:16}}>Next</Text>
-    </TouchableOpacity>
-);
-
-const Done = ({...props}) => (
-    <TouchableOpacity
-        style={{marginHorizontal:10}}
-        {...props}
-    >
-        <Text style={{fontSize:16}}>Done</Text>
-    </TouchableOpacity>
-);
-
-const OnboardingScreen = ({navigation}) => {
-    return (
-        <Onboarding
-        SkipButtonComponent={Skip}
-        NextButtonComponent={Next}
-        DoneButtonComponent={Done}
-        DotComponent={Dots}
-        onSkip={() => navigation.replace("Landing")}
-        onDone={() => navigation.navigate("Landing")}
-        pages={[
-          {
-            backgroundColor: '#a6e4d0',
-            image: <Image source={require('../../../res/images/Planets.png')} />,
-            title: 'Connect to the World',
-            subtitle: 'A New Way To Connect With The World',
-          },
-          {
-            backgroundColor: '#fdeb93',
-            image: <Image source={require('../../../res/images/heart.png')} />,
-            title: 'Share Your Favorites',
-            subtitle: 'Share Your Thoughts With Similar Kind of People',
-          },
-          {
-            backgroundColor: '#e9bcbe',
-            image: <Image source={require('../../../res/images/Numbers.png')} />,
-            title: 'Become The Star',
-            subtitle: "Let The Spot Light Capture You",
-          },
-        ]}
-      />
-    );
-};
-
-export default OnboardingScreen;
-
+export default OnBoarding

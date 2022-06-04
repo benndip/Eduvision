@@ -7,6 +7,9 @@ import ModelGroupAr from './ModelGroupAr/ModelGroupAr.component';
 import FormButton from "./FormButton/FromButton.component";
 import FormInput from "./FormInput/FormInput.component";
 import SocialButton from "./SocialButton/SocialButton.component";
+import Paginator from './Paginator/Paginator.component';
+import NextButton from './NextButton/NextButton.component';
+import OnboardingItem from './OboardingItem/OnboardingItem.component';
 
 export {
     LargeItem,
@@ -17,5 +20,8 @@ export {
     ModelGroupAr,
     FormButton,
     FormInput,
-    SocialButton
+    SocialButton,
+    Paginator,
+    NextButton,
+    OnboardingItem
 }

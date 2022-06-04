@@ -6,13 +6,14 @@ import ConceptItem from '../components/ConceptItem/ConceptItem.component';
 import Signup from '../screens/Signup/Signup.screen';
 import Login from '../screens/Login/Login.screen';
 import Onboarding from './Onboarding/Onboarding.screen';
+import Splash from './Splash/Splash.screen';
 
 export {
     Home,
     Landing,
     Details,
     ModelGroup,
-
+    Splash,
     ConceptItem,
     Signup,
     Login,

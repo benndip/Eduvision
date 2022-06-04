@@ -1,17 +1,18 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Landing, Login, Signup, Onboarding, Home, Details, ModelGroup } from '../screens'
+import { Landing, Login, Signup, Onboarding, Home, Details, ModelGroup, Splash } from '../screens'
 
 const Stack = createNativeStackNavigator();
 
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Landing"
+            initialRouteName="Splash"
             screenOptions={{
                 headerShown: false,
             }}
         >
+            <Stack.Screen name="Splash" component={Splash} />
             <Stack.Screen name="Landing" component={Landing} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Signup" component={Signup} />
