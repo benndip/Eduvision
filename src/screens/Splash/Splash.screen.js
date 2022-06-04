@@ -10,7 +10,7 @@ const Splash = ({ navigation }) => {
         try {
             const notFirstTimeonApp = await AsyncStorage.getItem('@not_first_time')
             if (notFirstTimeonApp === 'NOT_FIRST_TIME') {
-                navigation.navigate("Onboarding")
+                navigation.navigate("Landing")
             } else {
                 navigation.navigate("Onboarding")
             }
@@ -26,7 +26,7 @@ const Splash = ({ navigation }) => {
 
     return (
         <View>
-            <Text>Splash</Text>
+           
         </View>
     )
 }

@@ -12,11 +12,6 @@ const LargeItem = ({ backgroundColor, index, name, numberOfLessons, free, onCard
             <View>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.numberOfLessons}>{numberOfLessons} lessons</Text>
-                {
-                    free
-                    &&
-                    <Text style={styles.forFreeText}>For free!</Text>
-                }
                 <TouchableOpacity style={styles.startTouch}>
                     <Text style={styles.startText}>Start</Text> 
                     <Ionicons name="md-play" size={20} color="#ffffff" />

@@ -5,7 +5,6 @@ export const categories = [
     number_of_lessons: 6,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/bodyparts.png"),
     imageStyle: {
       width: "70%",
@@ -21,7 +20,6 @@ export const categories = [
     number_of_lessons: 10,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/cell.png"),
     imageStyle: {
       width: "100%",
@@ -34,7 +32,6 @@ export const categories = [
     number_of_lessons: 8,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/bone.png"),
     imageStyle: {
       width: "100%",
@@ -47,7 +44,6 @@ export const categories = [
     number_of_lessons: 6,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/physiology.png"),
     imageStyle: {
       width: "70%",
@@ -60,7 +56,6 @@ export const categories = [
     number_of_lessons: 10,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/virus.png"),
     imageStyle: {
       width: "100%",
@@ -73,7 +68,6 @@ export const categories = [
     number_of_lessons: 8,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/teeth.png"),
     imageStyle: {
       width: "100%",
@@ -86,7 +80,6 @@ export const categories = [
     number_of_lessons: 8,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/bacteria.png"),
     imageStyle: {
       width: "70%",
@@ -102,7 +95,6 @@ export const categories = [
     number_of_lessons: 18,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/tissue.png"),
     imageStyle: {
       width: "90%",
@@ -115,7 +107,6 @@ export const categories = [
     number_of_lessons: 20,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/surgery.png"),
     imageStyle: {
       width: "100%",
@@ -128,7 +119,6 @@ export const categories = [
     number_of_lessons: 20,
     vid: '',
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac urna nec arcu dignissim mattis vitae vel ex" ,
-    free: true,
     image: require("./images/categories/firstaid.png"),
     imageStyle: {
       width: "100%",
@@ -140,7 +130,7 @@ export const categories = [
 export const models = [
   {
     id: 1,
-    name: "Human Inner Ear",
+    name: "Inner Ear",
     normalImage: require("./models/ear/ear.png"),
     labeled_model: require("./models/ear/ear.glb"),
     unlabeled_model: require("./models/ear/unlabeled_ear.glb"),
@@ -156,11 +146,11 @@ export const models = [
     sz: 0.1,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 2,
-    name: "Human Brain",
+    name: "Brain",
     normalImage: require("./models/brain/brain.png"),
     labeled_model: require("./models/brain/brain.obj"),
     resources: [
@@ -188,11 +178,11 @@ export const models = [
     sz: 0.6,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 3,
-    name: "Human Skull",
+    name: "Skull",
     normalImage: require("./models/skull/skull.png"),
     labeled_model: require("./models/skull/skull.glb"),
     unlabeled_model: require("./models/skull/skull.glb"),
@@ -208,11 +198,11 @@ export const models = [
     sz: 1,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 4,
-    name: "Human Digestive System",
+    name: "Digestive System",
     normalImage: require("./models/digestive_system/digestive_system.png"),
     labeled_model: require("./models/digestive_system/digestive_system.glb"),
     unlabeled_model: require("./models/digestive_system/unlabeled_digestive_system.glb"),
@@ -228,11 +218,11 @@ export const models = [
     sz: 2,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 5,
-    name: "Human heart",
+    name: "heart",
     normalImage: require("./models/heart/heart.png"),
     labeled_model: require("./models/heart/heart.glb"),
     unlabeled_model: require("./models/heart/heart.glb"),
@@ -248,11 +238,11 @@ export const models = [
     sz: 1,
     rotation: [-10, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 5,
-    name: "Human eye",
+    name: "eye",
     normalImage: require("./models/eye/eyeball.png"),
     labeled_model: require("./models/eye/eye.glb"),
     unlabeled_model: require("./models/eye/unlabeled_eye.glb"),
@@ -268,11 +258,11 @@ export const models = [
     sz: 1,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 6,
-    name: "Human Molar",
+    name: "Molar",
     normalImage: require("./models/teeth/teeth.png"),
     labeled_model: require("./models/teeth/teeth.glb"),
     unlabeled_model: require("./models/teeth/teeth.glb"),
@@ -288,17 +278,17 @@ export const models = [
     sz: 1,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   },
   {
     id: 7,
-    name: "Human Skeletal Hand",
+    name: "Skeletal Hand",
     normalImage: require("./models/skeleton_hand/skeleton_hand.png"),
     labeled_model: require("./models/skeleton_hand/skeletal_hand.glb"),
     unlabeled_model: require("./models/skeleton_hand/skeletal_hand.glb"),
     type: "GLB",
     description:
-      "The human hand has 27 bones: the carpals or wrist accounts for 8; the metacarpals or palm contains five; the remaining fourteen are digital bones; fingers and thumb. The palm has five bones known as metacarpal bones, one to each of the 5 digits. These metacarpals have a head, a shaft, and a base.",
+      "The hand has 27 bones: the carpals or wrist accounts for 8; the metacarpals or palm contains five; the remaining fourteen are digital bones; fingers and thumb. The palm has five bones known as metacarpal bones, one to each of the 5 digits. These metacarpals have a head, a shaft, and a base.",
     initialPosition: [0, 0, -5],
     materialsAvailable: false,
     sT: 2,
@@ -308,6 +298,6 @@ export const models = [
     sz: 0.5,
     rotation: [0, 0, 0],
     lightingEvironment: null,
-    categoryId: 7,
+    categoryId: 1,
   }
 ];

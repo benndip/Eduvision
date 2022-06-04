@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, Image} from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import styles from './SmallItem.style'
@@ -7,7 +7,7 @@ import styles from './SmallItem.style'
 const SmallItem = ({ backgroundColor, index, onCardPress, numberOfLessons, image, name, free, imageStyle }) => {
 
     return (
-        <TouchableOpacity 
+        <TouchableOpacity
             style={styles.container(backgroundColor, index)}
             onPress={onCardPress}
         >
@@ -17,11 +17,6 @@ const SmallItem = ({ backgroundColor, index, onCardPress, numberOfLessons, image
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.numberOfLessons}>{numberOfLessons} lessons</Text>
             <View style={styles.priceAndStart}>
-            {
-                    free
-                    &&
-                    <Text style={styles.forFreeText}>Free!</Text>
-                }
                 <TouchableOpacity style={styles.startTouch}>
                     <Ionicons name="md-play" size={20} color="#23232C" />
                 </TouchableOpacity>

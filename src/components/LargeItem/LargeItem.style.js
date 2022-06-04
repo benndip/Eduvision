@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
        fontWeight: 'bold'
    },
    numberOfLessons: {
-       color: '#353b48'
+       color: '#353b48',
+       marginTop: 30
    },
    startTouch: {
        width: '40%',
