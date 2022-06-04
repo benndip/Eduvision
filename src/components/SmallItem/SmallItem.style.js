@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     imageContainer: {
-        borderWidth: 1,
         width: '80%',
         height: '45%',
         justifyContent: 'center',

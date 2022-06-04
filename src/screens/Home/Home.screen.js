@@ -63,7 +63,7 @@ const Home = ({ navigation }) => {
                 ListHeaderComponent={
                     <>
                         <Text style={styles.letsStart}>Let's start!</Text>
-                        <Text style={styles.smallText}>More than 200 lessons on Anatomy are available to you!</Text>
+                        <Text style={styles.smallText}>More than 200 lessons on <Text style={{ fontWeight:'700', color: '#ee5253' }}>Anatomy</Text> are available to you!</Text>
                     </>
                 }
                 ListFooterComponent={

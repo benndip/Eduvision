@@ -19,7 +19,7 @@ const LoginScreen = ({navigation}) => {
   // const {login, googleLogin, fbLogin} = useContext('');
 
   const login = () => {
-
+    navigation.navigate('Home')
   }
 
   const googleLogin = () => {

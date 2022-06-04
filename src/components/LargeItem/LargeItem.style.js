@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
        fontSize: 16
    },
    imageContainer: {
-       borderWidth: 1,
        width: '50%',
        height: '80%',
        position: 'absolute',

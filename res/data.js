@@ -105,8 +105,8 @@ export const categories = [
     free: true,
     image: require("./images/categories/tissue.png"),
     imageStyle: {
-      width: "100%",
-      height: "100%",
+      width: "90%",
+      height: "70%",
     },
   },
   {
