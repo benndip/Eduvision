@@ -1,33 +1,66 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   Image,
   Platform,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
+import isEmail from 'validator/lib/isEmail';
 
 import styles from './Login.style';
 
-import {FormInput, FormButton, SocialButton} from '../../components'
+import { FormInput, FormButton, SocialButton } from '../../components';
 
-const LoginScreen = ({navigation}) => {
+import { AuthContext } from '../../navigation/AuthProvider';
+
+const LoginScreen = ({ navigation }) => {
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
 
-  // const {login, googleLogin, fbLogin} = useContext('');
+  const { login, setUser } = useContext(AuthContext);
 
-  const login = () => {
-    navigation.navigate('Home')
-  }
+  const showToastWithGravityAndOffset = (message) => {
+    ToastAndroid.showWithGravityAndOffset(
+      message,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50
+    );
+  };
 
-  const googleLogin = () => {
-    
-  }
 
-  const fbLogin = () => {
-    
+  const loginUser = () => {
+
+    setLoading(true);
+
+    if (email.length == 0 || password.length == 0) {
+      showToastWithGravityAndOffset('All Input fields must be filled')
+      setLoading(false);
+      return false;
+    }
+
+    if (!isEmail(email)) {
+      showToastWithGravityAndOffset('Not a valid email');
+      setLoading(false);
+      return false;
+    }
+
+    const user = await login(email, password)
+    if (user) {
+      setUser(user)
+      AsyncStorage.setItem('@user', user);
+      navigation.navigate('Home');
+    } else {
+
+    }
+    setLoading(false);
+
   }
 
   return (
@@ -56,12 +89,18 @@ const LoginScreen = ({navigation}) => {
         secureTextEntry={true}
       />
 
-      <FormButton
-        buttonTitle="Sign In"
-        onPress={() => login(email, password)}
-      />
+      {
+        loading
+          ?
+          <ActivityIndicator style={{ marginTop: 10 }} size='large' color={'#2e64e5'} />
+          :
+          <FormButton
+            buttonTitle="Login"
+            onPress={loginUser}
+          />
+      }
 
-      <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
+      <TouchableOpacity style={styles.forgotButton} onPress={() => { }}>
         <Text style={styles.navButtonText}>Forgot Password?</Text>
       </TouchableOpacity>
 
@@ -72,7 +111,7 @@ const LoginScreen = ({navigation}) => {
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
-            onPress={() => fbLogin()}
+            onPress={() => { }}
           />
 
           <SocialButton
@@ -80,7 +119,7 @@ const LoginScreen = ({navigation}) => {
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            onPress={() => googleLogin()}
+            onPress={() => { }}
           />
         </View>
       ) : null}

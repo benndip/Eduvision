@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, TouchableOpacity, Platform, ToastAndroid, ActivityIndicator } from 'react-native';
 import isEmail from 'validator/lib/isEmail';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './Signup.style'
 
@@ -50,7 +51,7 @@ const Signup = ({ navigation }) => {
     const user = await register(email, password)
     if (user) {
       setUser(user)
-      console.log(user);
+      AsyncStorage.setItem('@user', user);
       navigation.navigate('Home');
     } else {
 
@@ -94,11 +95,10 @@ const Signup = ({ navigation }) => {
           <ActivityIndicator style={{ marginTop: 10 }} size='large' color={'#2e64e5'} />
           :
           <FormButton
-            buttonTitle="Sign Up"
+            buttonTitle="Register"
             onPress={registerUser}
           />
       }
-
 
       <View style={styles.textPrivate}>
         <Text style={styles.color_textPrivate}>
