@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, StatusBar } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
+import NetInfo from "@react-native-community/netinfo";
+
 import {
   ViroAmbientLight,
   ViroAnimations,
@@ -14,7 +16,7 @@ import {
   ViroNode,
   Viro3DObject,
 } from "@viro-community/react-viro";
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 import styles from "./Landing.style";
 
@@ -53,7 +55,7 @@ const LandingScene = () => {
         color="#ffffff"
         attenuationStartDistance={40}
         attenuationEndDistance={50}
-        />
+      />
       {showModels && (
         <ViroNode position={[0, 0.1, -0.5]}>
           <ViroOrbitCamera
@@ -65,7 +67,7 @@ const LandingScene = () => {
             source={require("../../../res/models/heart/heart.glb")}
             // resources={[]}
             position={[0, 1.2, -5]}
-            scale={[0.8,0.8,0.8]}
+            scale={[0.8, 0.8, 0.8]}
             rotation={[0, 0, 0]}
             type="GLB"
           />
@@ -78,27 +80,50 @@ const LandingScene = () => {
 const Landing = ({ navigation }) => {
 
   const isFocused = useIsFocused();
-
-  const [initializing, setInitializing] = useState(true);
-  const {user, setUser} = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   const onAuthStateChanged = (user) => {
-      setUser(user);
-      console.log(user);
-      if (initializing) setInitializing(false);
+    setUser(user);
+    getStarted()
   }
+
+  const checkInternetConnection = () => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      const { type, isConnected, isInternetReachable } = state;
+      console.log("Connection type", type);
+      console.log("Is connected?", isConnected);
+      console.log("is Internet Reachable?", isInternetReachable);
+
+      if (isConnected && isInternetReachable) {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+      } else {
+        showToastWithGravityAndOffset('Please check you internet connection and Press Get Started');
+        return
+      }
+    });
+  }
+
+  const showToastWithGravityAndOffset = (message) => {
+    ToastAndroid.showWithGravityAndOffset(
+      message,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50
+    );
+  };
   
+  const getStarted = () => {
+    user ?
+      navigation.navigate("Home")
+      :
+      navigation.navigate("Login")
+  }
+
   useEffect(() => {
-      // const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-      // return subscriber; // unsubscribe on unmount
+    
   }, []);
 
-  const getStarted = () => { 
-    user ?
-    navigation.navigate("BottomNavigation")
-    :
-    navigation.navigate("Login")
-  }
 
   return (
     <View style={styles.container}>
@@ -114,7 +139,7 @@ const Landing = ({ navigation }) => {
       )}
       <TouchableOpacity
         style={styles.exploreBtn}
-        onPress={getStarted}
+        onPress={checkInternetConnection}
       >
         <Text style={styles.exploreTxt}>Get Started</Text>
       </TouchableOpacity>
@@ -128,20 +153,5 @@ const Landing = ({ navigation }) => {
     </View>
   );
 };
-
-// ViroAnimations.registerAnimations({
-//   rotateBox: {
-//     properties: {
-//       rotateY: "+=45",
-//     },
-//     duration: 1500,
-//   },
-//   rotateSphere: {
-//     properties: {
-//       rotateY: "+=45",
-//     },
-//     duration: 1500,
-//   },
-// });
 
 export default Landing;
