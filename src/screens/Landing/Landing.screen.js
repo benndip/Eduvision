@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, TouchableOpacity, StatusBar } from "react-native";
+import { View, Text, TouchableOpacity, StatusBar, ToastAndroid } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {
   ViroAmbientLight,
@@ -82,22 +83,23 @@ const Landing = ({ navigation }) => {
   const isFocused = useIsFocused();
   const { user, setUser } = useContext(AuthContext);
 
-  const onAuthStateChanged = (user) => {
-    setUser(user);
-    getStarted()
-  }
-
   const checkInternetConnection = () => {
-    const unsubscribe = NetInfo.addEventListener(state => {
+    const unsubscribe = NetInfo.addEventListener(async (state) => {
       const { type, isConnected, isInternetReachable } = state;
       console.log("Connection type", type);
       console.log("Is connected?", isConnected);
       console.log("is Internet Reachable?", isInternetReachable);
 
       if (isConnected && isInternetReachable) {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        try {
+          const userData = await AsyncStorage.getItem('@user');
+          setUser(userData);
+          navigation.navigate('Home');
+        } catch (error) {
+          navigation.navigate('Login');
+        }
       } else {
-        showToastWithGravityAndOffset('Please check you internet connection and Press Get Started');
+        showToastWithGravityAndOffset('Check you internet connection and Press Get Started');
         return
       }
     });
@@ -112,7 +114,7 @@ const Landing = ({ navigation }) => {
       50
     );
   };
-  
+
   const getStarted = () => {
     user ?
       navigation.navigate("Home")
@@ -121,7 +123,7 @@ const Landing = ({ navigation }) => {
   }
 
   useEffect(() => {
-    
+
   }, []);
 
 

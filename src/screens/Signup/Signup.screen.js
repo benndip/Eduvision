@@ -1,17 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, TouchableOpacity, Platform, ToastAndroid } from 'react-native';
+import { View, Text, TouchableOpacity, Platform, ToastAndroid, ActivityIndicator } from 'react-native';
 import isEmail from 'validator/lib/isEmail';
 
 import styles from './Signup.style'
 
 import { FormInput, FormButton, SocialButton } from '../../components';
-import {AuthContext} from '../../navigation/AuthProvider'
+import { AuthContext } from '../../navigation/AuthProvider'
 
 const Signup = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [hasError, setHasError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const showToastWithGravityAndOffset = (message) => {
     ToastAndroid.showWithGravityAndOffset(
@@ -23,34 +23,39 @@ const Signup = ({ navigation }) => {
     );
   };
 
-  const { register } = useContext(AuthContext)
+  const { register, setUser } = useContext(AuthContext)
 
-  const registerUser =  async () =>{
-    if(email.length == 0 || password.length == 0 || confirmPassword.length == 0){
-      setHasError(true);
+  const registerUser = async () => {
+
+    setLoading(true);
+
+    if (email.length == 0 || password.length == 0 || confirmPassword.length == 0) {
       showToastWithGravityAndOffset('All Input fields must be filled')
+      setLoading(false);
       return false;
     }
 
-    if (!isEmail(email)){
-      setHasError(true);
-      showToastWithGravityAndOffset('Not a valid email')
+    if (!isEmail(email)) {
+      showToastWithGravityAndOffset('Not a valid email');
+      setLoading(false);
       return false;
     }
 
-    if(password !== confirmPassword){
-      setHasError(true);
-      showToastWithGravityAndOffset('Password does not match')
+    if (password !== confirmPassword) {
+      showToastWithGravityAndOffset('Password does not match');
+      setLoading(false);
       return false;
     }
 
     const user = await register(email, password)
-    if(user){
+    if (user) {
+      setUser(user)
       console.log(user);
-      navigation.navigate('BottomNavigation');
-    }else{
+      navigation.navigate('Home');
+    } else {
 
     }
+    setLoading(false);
   }
 
   return (
@@ -83,10 +88,17 @@ const Signup = ({ navigation }) => {
         passwordInput
       />
 
-      <FormButton
-        buttonTitle="Sign Up"
-        onPress={registerUser}
-      />
+      {
+        loading
+          ?
+          <ActivityIndicator style={{ marginTop: 10 }} size='large' color={'#2e64e5'} />
+          :
+          <FormButton
+            buttonTitle="Sign Up"
+            onPress={registerUser}
+          />
+      }
+
 
       <View style={styles.textPrivate}>
         <Text style={styles.color_textPrivate}>
