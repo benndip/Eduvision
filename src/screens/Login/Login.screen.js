@@ -9,6 +9,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 import isEmail from 'validator/lib/isEmail';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './Login.style';
 
@@ -35,7 +36,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
 
-  const loginUser = () => {
+  const loginUser = async () => {
 
     setLoading(true);
 
@@ -54,13 +55,12 @@ const LoginScreen = ({ navigation }) => {
     const user = await login(email, password)
     if (user) {
       setUser(user)
-      AsyncStorage.setItem('@user', user);
+      await AsyncStorage.setItem('@user', user);
       navigation.navigate('Home');
     } else {
 
     }
     setLoading(false);
-
   }
 
   return (

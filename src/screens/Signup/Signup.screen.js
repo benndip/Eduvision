@@ -3,10 +3,10 @@ import { View, Text, TouchableOpacity, Platform, ToastAndroid, ActivityIndicator
 import isEmail from 'validator/lib/isEmail';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import styles from './Signup.style'
+import styles from './Signup.style';
 
 import { FormInput, FormButton, SocialButton } from '../../components';
-import { AuthContext } from '../../navigation/AuthProvider'
+import { AuthContext } from '../../navigation/AuthProvider';
 
 const Signup = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -51,7 +51,7 @@ const Signup = ({ navigation }) => {
     const user = await register(email, password)
     if (user) {
       setUser(user)
-      AsyncStorage.setItem('@user', user);
+      await AsyncStorage.setItem('@user', user);
       navigation.navigate('Home');
     } else {
 

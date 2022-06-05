@@ -7,7 +7,7 @@ import {
   Viro3DObject,
   ViroAnimations,
   ViroOrbitCamera,
-  Viro3DSceneNavigator,
+  ViroVRSceneNavigator,
   ViroLightingEnvironment,
   ViroMaterials
 } from "@viro-community/react-viro";
@@ -96,7 +96,8 @@ const VrScene = ({ item }) => {
   return (
     <View style={{ height: "100%", width: "100%" }}>
       {showingScene && (
-        <Viro3DSceneNavigator
+        <ViroVRSceneNavigator
+          vrModeEnabled={false}
           initialScene={{
             scene: Scene,
           }}
