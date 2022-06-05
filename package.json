@@ -18,7 +18,7 @@
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
-    "@viro-community/react-viro": "^2.22.0",
+    "@viro-community/react-viro": "^2.23.0",
     "install": "^0.13.0",
     "npm": "^8.11.0",
     "react": "17.0.2",

@@ -31,7 +31,7 @@ const VrScene = ({ item }) => {
 
   const Scene = () => {
     const [scaleFactor, setScaleFactor] = useState(1);
-    const [loadingModel, setLoadingModel] = useState(true);  
+    const [loadingModel, setLoadingModel] = useState(true);
     const [showMaterial, setShowMaterial] = useState(false);
 
     useEffect(() => {

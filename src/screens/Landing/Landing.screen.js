@@ -103,6 +103,7 @@ const Landing = ({ navigation }) => {
         return
       }
     });
+    checkInternetConnection.unsubscribe = unsubscribe; // This is to get a reference to the unsubscribe method out of this function.
   }
 
   const showToastWithGravityAndOffset = (message) => {
@@ -115,17 +116,12 @@ const Landing = ({ navigation }) => {
     );
   };
 
-  const getStarted = () => {
-    user ?
-      navigation.navigate("Home")
-      :
-      navigation.navigate("Login")
-  }
-
   useEffect(() => {
-
-  }, []);
-
+    return () => {
+      checkInternetConnection();
+      checkInternetConnection.unsubscribe()
+    }
+  }, [isFocused])
 
   return (
     <View style={styles.container}>

@@ -1,14 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
-const styles =  StyleSheet.create({
+const { width, height } = Dimensions.get('screen');
+
+const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingHorizontal: '3%'
+        paddingHorizontal: '3%',
+        backgroundColor: 'white',
+        width: '100%',
+        justifyContent: 'center',
+        flex: 1
     },
     modelViewCard: {
         marginTop: '3%',
         width: '100%',
-        height: '55%',
+        height: 0.55 * height,
         elevation: 5,
         alignSelf: 'center',
         shadowColor: 'red',
@@ -17,13 +22,13 @@ const styles =  StyleSheet.create({
         alignItems: 'center',
         overflow: 'hidden',
     },
-    detailsText:{
+    detailsText: {
         alignSelf: 'center',
         marginTop: 10,
         textAlign: 'center',
         lineHeight: 25
     },
-    changeView:{
+    changeView: {
         width: '20%',
         height: 55,
         borderRadius: 8,
@@ -44,7 +49,7 @@ const styles =  StyleSheet.create({
         height: '100%',
         backgroundColor: 'white'
     },
-    titleText:{
+    titleText: {
         alignSelf: 'center',
         marginVertical: 10,
         fontSize: 20
@@ -90,7 +95,40 @@ const styles =  StyleSheet.create({
     rotateButtonText: {
         color: '#ffffff',
         fontWeight: 'bold',
+    },
+    imageView: {
+        width: '100%',
+        height: 0.4 * height,
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden'
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+    },
+    definition: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#57606f',
+        letterSpacing: 1.5,
+        textAlign: 'center',
+        lineHeight: 30,
+        marginVertical: 10,
+        alignSelf: 'center'
+    },
+    functionOfParts: {
+        marginVertical: 10,
+        alignSelf: 'center',
+        fontSize: 22,
+        textDecorationLine: 'underline',
+        color: '#833471',
+        fontWeight: 'bold'
+    },
+    functionsContainer: {
+        width: '100%',
     }
 });
 
-export default styles
+export default styles;
