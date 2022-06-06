@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import {
   ViroScene,
@@ -9,8 +9,11 @@ import {
   ViroOrbitCamera,
   ViroVRSceneNavigator,
   ViroLightingEnvironment,
-  ViroMaterials
+  ViroMaterials,
+  Viro3DSceneNavigator,
 } from "@viro-community/react-viro";
+
+import { XrLoader } from '../../components';
 
 const VrScene = ({ item }) => {
   const {
@@ -31,8 +34,30 @@ const VrScene = ({ item }) => {
 
   const Scene = () => {
     const [scaleFactor, setScaleFactor] = useState(1);
-    const [loadingModel, setLoadingModel] = useState(true);
     const [showMaterial, setShowMaterial] = useState(false);
+    const [loadingModel, setLoadingModel] = useState(true);
+    const [rotationState, setRotationState] = useState(rotation);
+    const [scale, setScale] = useState([1, 1, 1]);
+
+    const vrRef = useRef(null)
+
+    const onRotate = (rotateState, rotationFactor, source) => {
+      if (rotateState == 3) {
+        console.log(rotationState);
+        setRotationState([rotationState[0] + rotationFactor, rotationState[1] + rotationFactor, rotationState[2] + rotationFactor])
+        return
+      }
+      vrRef?.current.setNativeProps({ rotation: [rotationState[0] + rotationFactor, rotationState[1] + rotationFactor, rotationState[2] + rotationFactor] });
+    }
+
+    const onPinch = (pinchState, scaleFactor, source) => {
+      var newScale = scale.map((x) => { return x * scaleFactor })
+      if (pinchState == 3) {
+        setScale(newScale)
+        return
+      }
+      vrRef?.current.setNativeProps({ scale: newScale });
+    }
 
     useEffect(() => {
       if (materialsAvailable) {
@@ -42,6 +67,11 @@ const VrScene = ({ item }) => {
         setShowMaterial(true);
       }
     }, []);
+
+    useEffect(() => {
+
+    }, [loadingModel])
+
     return (
       <ViroScene>
         <ViroOrbitCamera
@@ -53,25 +83,32 @@ const VrScene = ({ item }) => {
         {lightingEvironment && (
           <ViroLightingEnvironment source={lightingEvironment} />
         )}
-        <Viro3DObject
-          source={labeled_model}
-          resources={resources}
-          position={initialPosition}
-          scale={[sx * scaleFactor, sy * scaleFactor, sz * scaleFactor]}
-          type={type}
-          rotation={rotation}
-          onPinch={(pinchState, scaleFactor, source) => {
-            setScaleFactor(scaleFactor);
-          }}
-          onLoadEnd={() => {
-            setLoadingModel(false);
-          }}
-          onRotate={(rotateState, rotationFactor, source) => {
-            console.log(rotationFactor);
-          }}
-          animation={{ name: "spin", run: true, loop: true }}
-          materials={showMaterial ? ["material"] : []}
-        />
+
+        {
+          loadingModel
+          &&
+          <XrLoader />
+        }
+        {
+          <Viro3DObject
+            ref={vrRef}
+            source={labeled_model}
+            resources={resources}
+            position={initialPosition}
+            scale={scale}
+            type={type}
+            rotation={rotationState}
+            onPinch={onPinch}
+            onLoadStart={() => {
+              setLoadingModel(true)
+            }}
+            onLoadEnd={() => {
+              setLoadingModel(false);
+            }}
+            onRotate={onRotate}
+            materials={showMaterial ? ["material"] : []}
+          />
+        }
       </ViroScene>
     );
   };

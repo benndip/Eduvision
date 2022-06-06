@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Dimensions } from "react-native";
 import {
   ViroARSceneNavigator,
   ViroARScene,
@@ -10,9 +10,11 @@ import {
   ViroLightingEnvironment,
 } from "@viro-community/react-viro";
 
-import styles from "./ModelGroupAr.style";
+import styles from "./ArScene.style";
 
-const ModelGroupAr = ({ item }) => {
+const { width, height } = Dimensions.get('screen');
+
+const ArScene = ({ item }) => {
   const [loadingModel, setLoadingModel] = useState(true);
 
   // console.log(route.params)
@@ -100,7 +102,7 @@ const ModelGroupAr = ({ item }) => {
   };
 
   return (
-    <View style={{ height: "100%", width: "100%" }}>
+    <View style={{ height: height, width: "100%" }}>
         {
             showingScene
             &&
@@ -122,4 +124,4 @@ ViroAnimations.registerAnimations({
   },
 });
 
-export default ModelGroupAr;
+export default ArScene;

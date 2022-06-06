@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
+        zIndex:99999
     },
     detailsText: {
         alignSelf: 'center',
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
         width: '30%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#130f40',
+        backgroundColor: '#273c75',
         flexDirection: 'row',
         justifyContent: 'space-around',
         paddingHorizontal: 5
@@ -83,18 +84,18 @@ const styles = StyleSheet.create({
         width: '30%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#b71540',
+        backgroundColor: '#ee5253',
         flexDirection: 'row',
         justifyContent: 'space-around',
         paddingHorizontal: 5
     },
     labelText: {
         color: '#ffffff',
-        fontWeight: 'bold',
+        fontWeight: '200'
     },
     rotateButtonText: {
-        color: '#ffffff',
-        fontWeight: 'bold',
+        color: '#000000',
+        fontWeight: '600'
     },
     imageView: {
         width: '100%',
@@ -128,6 +129,34 @@ const styles = StyleSheet.create({
     },
     functionsContainer: {
         width: '100%',
+    },
+    takeQuizBtn: {
+        width: '100%',
+        height: 55,
+        backgroundColor: '#9980FA',
+        borderRadius: 8,
+        marginVertical: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    takeQuizTxt: {
+        fontSize: 22,
+        fontWeight: 'bold'
+    },
+    enableScrollBtn: {
+        backgroundColor: '#fa8231',
+        height: '100%',
+        borderRadius: 10,
+        width: '30%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingHorizontal: 5
+    },
+    enableScrollText: {
+        color: '#fff',
+        fontWeight: '600'
     }
 });
 

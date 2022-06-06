@@ -22,9 +22,12 @@ import auth from '@react-native-firebase/auth';
 import styles from "./Landing.style";
 
 import { AuthContext } from '../../navigation/AuthProvider';
+import { XrLoader } from '../../components';
+
 
 const LandingScene = () => {
   const [showModels, setShowModels] = useState(false);
+  const [loadingModel, setLoadingModel] = useState(true);
 
   const changeModelsState = () => {
     setTimeout(() => {
@@ -35,6 +38,11 @@ const LandingScene = () => {
   useEffect(() => {
     changeModelsState();
   }, []);
+
+  useEffect(() => {
+
+  }, [loadingModel])
+
 
   return (
     <ViroScene>
@@ -57,6 +65,11 @@ const LandingScene = () => {
         attenuationStartDistance={40}
         attenuationEndDistance={50}
       />
+      {
+        loadingModel
+        &&
+        <XrLoader />
+      }
       {showModels && (
         <ViroNode position={[0, 0.1, -0.5]}>
           <ViroOrbitCamera
@@ -64,14 +77,22 @@ const LandingScene = () => {
             position={[0, 0, -0]}
             focalPoint={[0, 0.1, -5]}
           />
-          <Viro3DObject
-            source={require("../../../res/models/heart/heart.glb")}
-            // resources={[]}
-            position={[0, 1.2, -5]}
-            scale={[0.8, 0.8, 0.8]}
-            rotation={[0, 0, 0]}
-            type="GLB"
-          />
+          {
+            <Viro3DObject
+              source={require("../../../res/models/heart/heart.glb")}
+              // resources={[]}
+              position={[0, 1.2, -5]}
+              scale={[0.8, 0.8, 0.8]}
+              rotation={[0, 0, 0]}
+              type="GLB"
+              onLoadStart={() => {
+                setLoadingModel(true)
+              }}
+              onLoadEnd={() => {
+                setLoadingModel(false);
+              }}
+            />
+          }
         </ViroNode>
       )}
     </ViroScene>
