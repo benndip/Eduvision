@@ -1,37 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Dimensions } from "react-native";
+import { View, Dimensions } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+
 import {
-  ViroARSceneNavigator,
-  ViroARScene,
+  ViroScene,
   ViroAmbientLight,
   Viro3DObject,
   ViroAnimations,
-  ViroMaterials,
+  ViroOrbitCamera,
+  ViroVRSceneNavigator,
   ViroLightingEnvironment,
+  ViroMaterials,
+  Viro3DSceneNavigator,
+  ViroARSceneNavigator,
+  ViroARScene
 } from "@viro-community/react-viro";
 
-import styles from "./ArScene.style";
+import { XrLoader } from '../../components';
 
 const { width, height } = Dimensions.get('screen');
 
 const ArScene = ({ item }) => {
-  const [loadingModel, setLoadingModel] = useState(true);
-
-  // console.log(route.params)
   const {
+    unlabeled_model,
+    resources,
+    initialPosition,
+    type,
+    rotation,
     sx,
     sy,
     sz,
-    sT,
     material,
     lightingEvironment,
-    dT,
-    unlabeled_model,
-    materialsAvailable,
-    rotation,
-    initialPosition,
-    type,
-    resources,
+    materialsAvailable
   } = item;
 
   const [showingScene, setShowingScene] = useState(false);
@@ -43,9 +43,23 @@ const ArScene = ({ item }) => {
     };
   }, []);
 
-  const ArItem = () => {
+  const Scene = () => {
     const [showMaterial, setShowMaterial] = useState(false);
-    const [scaleFactor, setScaleFactor] = useState(1);
+    const [loadingModel, setLoadingModel] = useState(true);
+    const [rotationState, setRotationState] = useState(rotation);
+    const [scale, setScale] = useState([sx, sy, sz]);
+
+    const vrRef = useRef(null)
+
+    const onPinch = (pinchState, scaleFactor, source) => {
+      var newScale = scale.map((x) => { return x * scaleFactor })
+      if (pinchState == 3) {
+        setScale(newScale)
+        return
+      }
+      vrRef?.current.setNativeProps({ scale: newScale });
+    }
+
     useEffect(() => {
       if (materialsAvailable) {
         ViroMaterials.createMaterials({
@@ -54,63 +68,60 @@ const ArScene = ({ item }) => {
         setShowMaterial(true);
       }
     }, []);
+
+    useEffect(() => {
+
+    }, [loadingModel])
+
     return (
       <ViroARScene>
         <ViroAmbientLight color="#ffffff" />
         {lightingEvironment && (
           <ViroLightingEnvironment source={lightingEvironment} />
         )}
-        {materialsAvailable ? (
+        {
+          loadingModel
+          &&
+          <XrLoader />
+        }
+        {
           <Viro3DObject
+            ref={vrRef}
             source={unlabeled_model}
             resources={resources}
             position={initialPosition}
-            scale={[sx * scaleFactor, sy * scaleFactor, sz * scaleFactor]}
+            scale={scale}
             type={type}
-            animation={{ name: "spin", run: true, loop: true }}
-            rotation={rotation}
-            onPinch={(pinchState, scaleFactor, source) => {
-              setScaleFactor(scaleFactor);
-              console.log(scaleFactor);
+            rotation={rotationState}
+            onPinch={onPinch}
+            onLoadStart={() => {
+              setLoadingModel(true)
             }}
             onLoadEnd={() => {
               setLoadingModel(false);
-              console.log("Loading Ended");
             }}
+            animation={{ name: "spin", run: true, loop: true }}
             materials={showMaterial ? ["material"] : []}
           />
-        ) : (
-          <Viro3DObject
-            source={unlabeled_model}
-            resources={resources}
-            position={initialPosition}
-            scale={[sx * scaleFactor, sy * scaleFactor, sz * scaleFactor]}
-            type={type}
-            animation={{ name: "spin", run: true, loop: true }}
-            rotation={rotation}
-            onPinch={(pinchState, scaleFactor, source) => {
-              setScaleFactor(scaleFactor);
-              console.log(scaleFactor);
-            }}
-            onLoadEnd={() => {
-              setLoadingModel(false);
-            }}
-          />
-        )}
+        }
       </ViroARScene>
     );
   };
 
+  useEffect(() => {
+    setShowingScene(true);
+    return () => {
+      setShowingScene(true);
+    };
+  }, []);
+
   return (
     <View style={{ height: height, width: "100%" }}>
-        {
-            showingScene
-            &&
-            <ViroARSceneNavigator initialScene={{ scene: ArItem }} />
-        }
-      {loadingModel && (
-        <Text style={styles.loadingModelText}>Loading Model</Text>
-      )}
+      {
+        showingScene
+        &&
+        <ViroARSceneNavigator initialScene={{ scene: Scene }} />
+      }
     </View>
   );
 };
@@ -120,7 +131,7 @@ ViroAnimations.registerAnimations({
     properties: {
       rotateY: "+=45",
     },
-    duration: 1500,
+    duration: 1800,
   },
 });
 

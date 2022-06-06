@@ -33,11 +33,10 @@ const VrScene = ({ item }) => {
   const [showingScene, setShowingScene] = useState(false);
 
   const Scene = () => {
-    const [scaleFactor, setScaleFactor] = useState(1);
     const [showMaterial, setShowMaterial] = useState(false);
     const [loadingModel, setLoadingModel] = useState(true);
     const [rotationState, setRotationState] = useState(rotation);
-    const [scale, setScale] = useState([1, 1, 1]);
+    const [scale, setScale] = useState([sx, sy, sz]);
 
     const vrRef = useRef(null)
 
@@ -83,7 +82,6 @@ const VrScene = ({ item }) => {
         {lightingEvironment && (
           <ViroLightingEnvironment source={lightingEvironment} />
         )}
-
         {
           loadingModel
           &&
@@ -119,16 +117,6 @@ const VrScene = ({ item }) => {
       setShowingScene(true);
     };
   }, []);
-
-  // Register animations here
-  ViroAnimations.registerAnimations({
-    spin: {
-      properties: {
-        rotateY: "+=45",
-      },
-      duration: 1500,
-    },
-  });
 
   return (
     <View style={{ height: "100%", width: "100%" }}>
