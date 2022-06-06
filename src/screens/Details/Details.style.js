@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
     imageView: {
         width: '100%',
         height: 0.4 * height,
-        borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        marginVertical: 20
     },
     image: {
         width: '100%',

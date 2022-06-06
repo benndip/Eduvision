@@ -147,6 +147,27 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/ear/anotated.jpg"),
+    functions:[
+      {
+        id: 1,
+        name: 'Cerebrum',
+        definition: 'This is the largest part of the brain and it is comopsed of right and left hemisperes',
+        function: 'This is the largest part of the brain and it is comopsed of right and left hemisperes'
+      },
+      {
+        id: 2,
+        name: 'Cerebellum',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'The cerebellum (“little brain”) is a fist-sized portion of the brain located at the back of the head, below the temporal and occipital lobes and above the brainstem.'
+      },
+      {
+        id: 3,
+        name: 'BrainStem',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'The brainstem (middle of brain) connects the cerebrum with the spinal cord. The brainstem includes the midbrain, the pons and the medulla.'
+      }
+    ]
   },
   {
     id: 2,
@@ -179,6 +200,27 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/brain/anotated.png"),
+    functions:[
+      {
+        id: 1,
+        name: 'Cerebrum',
+        definition: 'This is the largest part of the brain and it is comopsed of right and left hemisperes',
+        function: 'This is the largest part of the brain and it is comopsed of right and left hemisperes'
+      },
+      {
+        id: 2,
+        name: 'Cerebellum',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'The cerebellum (“little brain”) is a fist-sized portion of the brain located at the back of the head, below the temporal and occipital lobes and above the brainstem.'
+      },
+      {
+        id: 3,
+        name: 'BrainStem',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'The brainstem (middle of brain) connects the cerebrum with the spinal cord. The brainstem includes the midbrain, the pons and the medulla.'
+      }
+    ]
   },
   {
     id: 3,
@@ -199,6 +241,33 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/brain/anotated.png"),
+    functions:[
+      {
+        id: 1,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least'
+      },
+      {
+        id: 2,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 3,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 4,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      }
+    ]
   },
   {
     id: 4,
@@ -219,10 +288,37 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/brain/anotated.png"),
+    functions:[
+      {
+        id: 1,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least'
+      },
+      {
+        id: 2,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 3,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 4,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      }
+    ]
   },
   {
     id: 5,
-    name: "heart",
+    name: "Heart",
     normalImage: require("./models/heart/heart.png"),
     labeled_model: require("./models/heart/heart.glb"),
     unlabeled_model: require("./models/heart/heart.glb"),
@@ -239,10 +335,37 @@ export const models = [
     rotation: [-10, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/heart/anotated.jpg"),
+    functions:[
+      {
+        id: 1,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least'
+      },
+      {
+        id: 2,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 3,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 4,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      }
+    ]
   },
   {
     id: 5,
-    name: "eye",
+    name: "Eye",
     normalImage: require("./models/eye/eyeball.png"),
     labeled_model: require("./models/eye/eye.glb"),
     unlabeled_model: require("./models/eye/unlabeled_eye.glb"),
@@ -259,6 +382,33 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/eye/anotated.jpeg"),
+    functions:[
+      {
+        id: 1,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least'
+      },
+      {
+        id: 2,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 3,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 4,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      }
+    ]
   },
   {
     id: 6,
@@ -279,6 +429,33 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/brain/anotated.png"),
+    functions:[
+      {
+        id: 1,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least'
+      },
+      {
+        id: 2,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 3,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 4,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      }
+    ]
   },
   {
     id: 7,
@@ -299,5 +476,32 @@ export const models = [
     rotation: [0, 0, 0],
     lightingEvironment: null,
     categoryId: 1,
+    anotated: require("./models/brain/anotated.png"),
+    functions:[
+      {
+        id: 1,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least,Gives the body a nice shape at least'
+      },
+      {
+        id: 2,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 3,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      },
+      {
+        id: 4,
+        name: 'Phalanges',
+        definition: 'The phalanges are still all the types of things we talk about',
+        function: 'Gives the body a nice shape at least'
+      }
+    ]
   }
 ];

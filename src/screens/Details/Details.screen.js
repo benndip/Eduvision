@@ -39,7 +39,7 @@ const data = [
 
 const Details = ({ route }) => {
 
-  const { name, description } = route.params.item;
+  const { name, anotated, description, functions } = route.params.item;
 
   const [modelLoading, SetModelLoading] = useState(false);
   const [showingAr, setShowingAr] = useState(false);
@@ -68,15 +68,13 @@ const Details = ({ route }) => {
       >
         <Text style={styles.titleText}>{name}</Text>
         <View style={styles.imageView}>
-          <Image style={styles.image} source={require('../../../res/images/heart.png')} />
+          <Image style={styles.image} source={anotated} />
         </View>
-        <Text style={styles.definition}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-        </Text>
+        <Text style={styles.definition}>{description}</Text>
         <Text style={styles.functionOfParts}>Function of parts</Text>
         <View style={styles.functionsContainer}>
           {
-            data.map((data, index) => (
+            functions.map((data, index) => (
               <View style={{ alignSelf: 'center', flexDirection: 'row', alignItems: 'flex-start', marginVertical: 8, width: '99%' }} key={data.id}>
                 <Text>{index + 1}.)  </Text>
                 <Text style={{ fontWeight: 'bold' }}>{data.name}: </Text>
