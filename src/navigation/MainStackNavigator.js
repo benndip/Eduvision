@@ -9,6 +9,7 @@ import {
   Details,
   ModelGroup,
   Splash,
+  ForgotPassword,
 } from '../screens';
 
 const Stack = createNativeStackNavigator();
@@ -16,7 +17,7 @@ const Stack = createNativeStackNavigator();
 const MainStackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName="ForgotPassword"
       screenOptions={{
         headerShown: false,
       }}>
@@ -28,6 +29,7 @@ const MainStackNavigator = () => {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Details" component={Details} />
       <Stack.Screen name="ModelGroup" component={ModelGroup} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
     </Stack.Navigator>
   );
 };
