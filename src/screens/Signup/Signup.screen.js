@@ -1,37 +1,46 @@
-import React, { useContext, useState } from 'react';
-import { View, Text, TouchableOpacity, Platform, ToastAndroid, ActivityIndicator } from 'react-native';
+import React, {useContext, useState} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ToastAndroid,
+  ActivityIndicator,
+} from 'react-native';
 import isEmail from 'validator/lib/isEmail';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './Signup.style';
 
-import { FormInput, FormButton, SocialButton } from '../../components';
-import { AuthContext } from '../../navigation/AuthProvider';
+import {FormInput, FormButton, EduvisionText} from '../../components';
+import {AuthContext} from '../../navigation/AuthProvider';
 
-const Signup = ({ navigation }) => {
+const Signup = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const showToastWithGravityAndOffset = (message) => {
+  const showToastWithGravityAndOffset = message => {
     ToastAndroid.showWithGravityAndOffset(
       message,
       ToastAndroid.LONG,
       ToastAndroid.BOTTOM,
       25,
-      50
+      50,
     );
   };
 
-  const { register, setUser } = useContext(AuthContext)
+  const {register, setUser} = useContext(AuthContext);
 
   const registerUser = async () => {
-
     setLoading(true);
 
-    if (email.length == 0 || password.length == 0 || confirmPassword.length == 0) {
-      showToastWithGravityAndOffset('All Input fields must be filled')
+    if (
+      email.length == 0 ||
+      password.length == 0 ||
+      confirmPassword.length == 0
+    ) {
+      showToastWithGravityAndOffset('All Input fields must be filled');
       setLoading(false);
       return false;
     }
@@ -48,26 +57,28 @@ const Signup = ({ navigation }) => {
       return false;
     }
 
-    const user = await register(email, password)
+    const user = await register(email, password);
     if (user) {
-      setUser(user)
+      setUser(user);
       await AsyncStorage.setItem('@user', user);
       navigation.navigate('Home');
     } else {
-
     }
     setLoading(false);
-  }
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to <Text style={{ color: '#ff6b6b', fontWeight: 'bold', fontSize: 28 }}>Eduvision</Text> 🔥</Text>
+      <Text style={styles.text}>
+        Welcome to <EduvisionText style={{fontWeight: 'bold', fontSize: 28}} />
+        🔥
+      </Text>
 
       <FormInput
         labelValue={email}
-        onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholderText="Email"
-        iconType="user"
+        onChangeText={userEmail => setEmail(userEmail)}
+        placeholderText="Phone number"
+        iconType="phone"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
@@ -75,7 +86,7 @@ const Signup = ({ navigation }) => {
 
       <FormInput
         labelValue={password}
-        onChangeText={(userPassword) => setPassword(userPassword)}
+        onChangeText={userPassword => setPassword(userPassword)}
         placeholderText="Password"
         iconType="lock"
         passwordInput
@@ -83,57 +94,36 @@ const Signup = ({ navigation }) => {
 
       <FormInput
         labelValue={confirmPassword}
-        onChangeText={(userPassword) => setConfirmPassword(userPassword)}
+        onChangeText={userPassword => setConfirmPassword(userPassword)}
         placeholderText="Confirm Password"
         iconType="lock"
         passwordInput
       />
 
-      {
-        loading
-          ?
-          <ActivityIndicator style={{ marginTop: 10 }} size='large' color={'#2e64e5'} />
-          :
-          <FormButton
-            buttonTitle="Register"
-            onPress={registerUser}
-          />
-      }
+      {loading ? (
+        <ActivityIndicator
+          style={{marginTop: 10}}
+          size="large"
+          color={'#2e64e5'}
+        />
+      ) : (
+        <FormButton buttonTitle="Register" onPress={registerUser} />
+      )}
 
       <View style={styles.textPrivate}>
         <Text style={styles.color_textPrivate}>
           By registering, you confirm that you accept our{' '}
         </Text>
         <TouchableOpacity onPress={() => alert('Terms Clicked!')}>
-          <Text style={[styles.color_textPrivate, { color: '#e88832' }]}>
+          <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>
             Terms of service
           </Text>
         </TouchableOpacity>
         <Text style={styles.color_textPrivate}> and </Text>
-        <Text style={[styles.color_textPrivate, { color: '#e88832' }]}>
+        <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>
           Privacy Policy
         </Text>
       </View>
-
-      {Platform.OS === 'android' ? (
-        <View>
-          <SocialButton
-            buttonTitle="Sign Up with Facebook"
-            btnType="facebook"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            onPress={() => { }}
-          />
-
-          <SocialButton
-            buttonTitle="Sign Up with Google"
-            btnType="google"
-            color="#de4d41"
-            backgroundColor="#f5e7ea"
-            onPress={() => { }}
-          />
-        </View>
-      ) : null}
 
       <TouchableOpacity
         style={styles.navButton}

@@ -1,8 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import { View, Text, TouchableOpacity, StatusBar, ToastAndroid } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
-import NetInfo from "@react-native-community/netinfo";
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, {useState, useEffect, useContext} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  ToastAndroid,
+} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
+import NetInfo from '@react-native-community/netinfo';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   ViroAmbientLight,
@@ -16,14 +22,12 @@ import {
   ViroOmniLight,
   ViroNode,
   Viro3DObject,
-} from "@viro-community/react-viro";
-import auth from '@react-native-firebase/auth';
+} from '@viro-community/react-viro';
 
-import styles from "./Landing.style";
+import styles from './Landing.style';
 
-import { AuthContext } from '../../navigation/AuthProvider';
-import { XrLoader } from '../../components';
-
+import {AuthContext} from '../../navigation/AuthProvider';
+import {XrLoader} from '../../components';
 
 const LandingScene = () => {
   const [showModels, setShowModels] = useState(false);
@@ -39,10 +43,7 @@ const LandingScene = () => {
     changeModelsState();
   }, []);
 
-  useEffect(() => {
-
-  }, [loadingModel])
-
+  useEffect(() => {}, [loadingModel]);
 
   return (
     <ViroScene>
@@ -50,12 +51,12 @@ const LandingScene = () => {
 
       <ViroSkyBox
         source={{
-          nx: require("../../../res/images/grid_bg.jpg"),
-          px: require("../../../res/images/grid_bg.jpg"),
-          ny: require("../../../res/images/grid_bg.jpg"),
-          py: require("../../../res/images/grid_bg.jpg"),
-          nz: require("../../../res/images/grid_bg.jpg"),
-          pz: require("../../../res/images/grid_bg.jpg"),
+          nx: require('../../../res/images/grid_bg.jpg'),
+          px: require('../../../res/images/grid_bg.jpg'),
+          ny: require('../../../res/images/grid_bg.jpg'),
+          py: require('../../../res/images/grid_bg.jpg'),
+          nz: require('../../../res/images/grid_bg.jpg'),
+          pz: require('../../../res/images/grid_bg.jpg'),
         }}
       />
 
@@ -65,11 +66,7 @@ const LandingScene = () => {
         attenuationStartDistance={40}
         attenuationEndDistance={50}
       />
-      {
-        loadingModel
-        &&
-        <XrLoader />
-      }
+      {loadingModel && <XrLoader />}
       {showModels && (
         <ViroNode position={[0, 0.1, -0.5]}>
           <ViroOrbitCamera
@@ -79,14 +76,14 @@ const LandingScene = () => {
           />
           {
             <Viro3DObject
-              source={require("../../../res/models/heart/heart.glb")}
+              source={require('../../../res/models/heart/heart.glb')}
               // resources={[]}
               position={[0, 1.2, -5]}
               scale={[0.8, 0.8, 0.8]}
               rotation={[0, 0, 0]}
               type="GLB"
               onLoadStart={() => {
-                setLoadingModel(true)
+                setLoadingModel(true);
               }}
               onLoadEnd={() => {
                 setLoadingModel(false);
@@ -99,17 +96,16 @@ const LandingScene = () => {
   );
 };
 
-const Landing = ({ navigation }) => {
-
+const Landing = ({navigation}) => {
   const isFocused = useIsFocused();
-  const { user, setUser } = useContext(AuthContext);
+  const {user, setUser} = useContext(AuthContext);
 
   const checkInternetConnection = () => {
-    const unsubscribe = NetInfo.addEventListener(async (state) => {
-      const { type, isConnected, isInternetReachable } = state;
-      console.log("Connection type", type);
-      console.log("Is connected?", isConnected);
-      console.log("is Internet Reachable?", isInternetReachable);
+    const unsubscribe = NetInfo.addEventListener(async state => {
+      const {type, isConnected, isInternetReachable} = state;
+      console.log('Connection type', type);
+      console.log('Is connected?', isConnected);
+      console.log('is Internet Reachable?', isInternetReachable);
 
       if (isConnected && isInternetReachable) {
         try {
@@ -120,29 +116,31 @@ const Landing = ({ navigation }) => {
           navigation.navigate('Login');
         }
       } else {
-        showToastWithGravityAndOffset('Check you internet connection and Press Get Started');
-        return
+        showToastWithGravityAndOffset(
+          'Check you internet connection and Press Get Started',
+        );
+        return;
       }
     });
     checkInternetConnection.unsubscribe = unsubscribe; // This is to get a reference to the unsubscribe method out of this function.
-  }
+  };
 
-  const showToastWithGravityAndOffset = (message) => {
+  const showToastWithGravityAndOffset = message => {
     ToastAndroid.showWithGravityAndOffset(
       message,
       ToastAndroid.LONG,
       ToastAndroid.BOTTOM,
       25,
-      50
+      50,
     );
   };
 
   useEffect(() => {
     return () => {
       checkInternetConnection();
-      checkInternetConnection.unsubscribe()
-    }
-  }, [isFocused])
+      checkInternetConnection.unsubscribe();
+    };
+  }, [isFocused]);
 
   return (
     <View style={styles.container}>
@@ -158,13 +156,12 @@ const Landing = ({ navigation }) => {
       )}
       <TouchableOpacity
         style={styles.exploreBtn}
-        onPress={checkInternetConnection}
-      >
+        onPress={checkInternetConnection}>
         <Text style={styles.exploreTxt}>Get Started</Text>
       </TouchableOpacity>
       <Text style={styles.largeText}>Are you ready to learn?</Text>
       <Text style={styles.smallText}>
-        Plunge into the <Text style={styles.threeDText}>3D</Text> and{" "}
+        Plunge into the <Text style={styles.threeDText}>3D</Text> and{' '}
         <Text style={styles.augmentedRealityText}>Augmented Reality</Text> world
         with us. Discover new knowledge !
       </Text>

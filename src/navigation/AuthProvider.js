@@ -1,23 +1,20 @@
-import React, { createContext, useState } from 'react';
-import { ToastAndroid } from 'react-native';
-
-import auth from '@react-native-firebase/auth';
+import React, {createContext, useState} from 'react';
+import {ToastAndroid} from 'react-native';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-
+export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
 
-  const showToastWithGravityAndOffset = (message) => {
+  const showToastWithGravityAndOffset = message => {
     ToastAndroid.showWithGravityAndOffset(
       message,
       ToastAndroid.LONG,
       ToastAndroid.BOTTOM,
       25,
-      50
+      50,
     );
-    return
+    return;
   };
 
   return (
@@ -27,30 +24,25 @@ export const AuthProvider = ({ children }) => {
         setUser,
         login: async (email, password) => {
           try {
-            const userCredential = await auth().signInWithEmailAndPassword(email, password)
-            return userCredential
           } catch (error) {
             console.log(error);
           }
         },
         register: async (email, password) => {
           try {
-            const userCredential = await auth().createUserWithEmailAndPassword(email, password)
-            return userCredential
           } catch (e) {
-            showToastWithGravityAndOffset(e.message)
+            showToastWithGravityAndOffset(e.message);
           }
         },
         logout: async () => {
           try {
             await auth().signOut();
           } catch (e) {
-            showToastWithGravityAndOffset(e.message)
+            showToastWithGravityAndOffset(e.message);
           }
         },
-      }}
-    >
+      }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
